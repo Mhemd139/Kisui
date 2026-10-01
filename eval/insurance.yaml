@@ -1,0 +1,1084 @@
+# Travel insurance eval, DRAFT. Drafted by Claude on 2026-10-01 from the indexed documents.
+# status: unreviewed. These are not ground truth and no accuracy number is reported.
+# `npm run eval` checks only that every quote is found on its cited page.
+# Evidence: [source id from sources.json, page, exact quote]. Verdicts: covered | needs_extension | excluded | unclear.
+# No answers yet for Bituach Yashir, Menora and WeSure: their documents are not indexed.
+status: unreviewed
+drafted_on: 2026-10-01
+items:
+  - id: ski-piste
+    question: Skiing or snowboarding on a marked piste, during opening hours
+    answers:
+      PassportCard:
+        verdict: needs_extension
+        why: Winter sports are excluded unless the chapter 14 winter-sports extension is bought (23.23).
+        evidence:
+          - [passportcard-policy, 61, "סקי שלג ו/או סנובורד ו/או מזחלות שלג , למעט כיסוי לספורט חורף לפי ההרחבה המפורטת בפרק 14"]
+      Harel:
+        verdict: needs_extension
+        why: Exclusion 7.18 removes winter sports unless the chapter 19 cover is bought and listed.
+        evidence:
+          - [harel-policy, 17, "ספורט אתגרי כהגדרתו בפרק 18 ו/או ספורט חורף כהגדרתו בפרק 19 בפוליסה (למעט אם נרכש כיסוי זה וצוין בדף הרשימה)"]
+      Phoenix:
+        verdict: needs_extension
+        why: Exclusion 7.15 removes winter sports (defined in 1.42) unless the chapter 12 extension is bought.
+        evidence:
+          - [phoenix-policy, 12, "ספורט אתגרי ו/או ספורט חורף ו/או ספורט תחרותי, ככל שלא נרכשה הרחבה ו/או הרחבות מתאימות"]
+          - [phoenix-policy, 8, "1.42 ספורט חורף פעילותו של המבוטח באחד או יותר מענפי הפעילות הבאים"]
+      Clal:
+        verdict: needs_extension
+        why: General exclusion 1.6 removes winter sports; the winter-sports extension cancels it on designated pistes only.
+        evidence:
+          - [clal-policy, 17, "פעילות ספורטיבית הכוללת גלישה בשלג בכל דרך שהיא"]
+          - [clal-policy, 30, "סעיף 1.6 לחלק 3 בפוליסה הבסיסית בעניין חריג ספורט חורף בטל ומבוטל"]
+      Migdal:
+        verdict: needs_extension
+        why: Exclusion 12.1.6 removes winter sports unless a matching extension is bought.
+        evidence:
+          - [migdal-policy, 30, "ספורט אתגרי הכלול ברשימה שבאתר האינטרנט של המבטח ו/או ספורט חורף, ככל שלא נרכשה הרחבה מתאימה"]
+      AIG:
+        verdict: needs_extension
+        why: Exclusion 6.8 removes winter sports; section 5.6 covers them only if bought and printed in the policy spec.
+        evidence:
+          - [aig-policy, 32, "כל פעילות ספורטיבית אתגרית ו/או פעילות ספורט חורף, כהגדרתם בפוליסה"]
+          - [aig-policy, 22, "הכיסוי הביטוחי לפי פרק זה תקף רק אם נרכש על ידי המבוטח ואם צויין במפורש במפרט הפוליסה"]
+
+  - id: ski-off-piste
+    question: Off-piste skiing or snowboarding outside marked runs
+    answers:
+      PassportCard:
+        verdict: unclear
+        why: Chapter 14 defines winter sports without any piste condition; no off-piste clause was found.
+        question: Does the chapter 14 winter-sports extension cover skiing off marked pistes?
+        evidence:
+          - [passportcard-policy, 42, "14.1 הגדרה- ספורט חורף משמעותו:"]
+      Harel:
+        verdict: excluded
+        why: 7.18 never covers winter sports outside designated sites, hours and marked runs.
+        evidence:
+          - [harel-policy, 17, "ובכל מקרה לא יכוסה ספורט חורף שלא נעשה באתר המיועד לכך בשעות הפעילות המוכרזות של האתר ובמסלולים המסומנים המיועדים לכך"]
+      Phoenix:
+        verdict: excluded
+        why: The winter-sports extension excludes off-piste (12.2.1).
+        evidence:
+          - [phoenix-policy, 19, "או במקרה בו המבוטח גלש מחוץ למסלולי הגלישה המוסדרים off- piste"]
+      Clal:
+        verdict: excluded
+        why: The extension lifts the winter-sports exclusion only for designated sites, hours and runs.
+        evidence:
+          - [clal-policy, 30, "בגין פעילויות שנעשו באתר המיועד לכך, בשעות הפעילות שלו, במסלולים המיועדים לכך"]
+      Migdal:
+        verdict: excluded
+        why: Winter-sports cover is limited to designated sites, hours and runs.
+        evidence:
+          - [migdal-policy, 23, "אשר נעשתה באתר המיועד לכך בשעות הפעילות המוכרזות של האתר ובמסלולים המיועדים לכך"]
+      AIG:
+        verdict: excluded
+        why: Section 5.6 does not cover skiing outside authorised areas.
+        evidence:
+          - [aig-policy, 22, "במסגרת זו לא תכוסה החלקת שלג מחוץ לאזורים המורשים לכך"]
+
+  - id: scuba-certified
+    question: Recreational scuba dive to 18 m by a certified diver
+    answers:
+      PassportCard:
+        verdict: needs_extension
+        why: Diving is on the extreme-sports list, subject to certification; needs chapter 12.
+        evidence:
+          - [passportcard-extreme-sports, 1, "צלילה בכפוף להסמכה"]
+          - [passportcard-policy, 61, "פעילות המבוטח בכל ענף ספורט תחרותי, מקצועי או ספורט אתגרי"]
+      Harel:
+        verdict: needs_extension
+        why: Diving deeper than 3 m is on Harel's extreme-sports list; needs chapter 18.
+        evidence:
+          - [harel-extreme-sports, 1, "צלילה לעומק מעל ל-3 מטר לרבות צלילה חופשית צלילה באספקת שטח וצלילת SCUBA"]
+      Phoenix:
+        verdict: needs_extension
+        why: Diving is in definition 1.41 only with a valid Israeli diving licence; needs chapter 11.
+        evidence:
+          - [phoenix-policy, 8, "צלילה לרבות צלילה לעומקים (בתנאי שהמבוטח מחזיק ברישיון צלילה ישראלי מתאים ותקף)"]
+      Clal:
+        verdict: needs_extension
+        why: Diving with breathing equipment is an extreme sport under 1.4; needs the traveller extension.
+        evidence:
+          - [clal-policy, 17, "צלילה הדורשת שימוש בציוד נשימה"]
+          - [clal-policy, 31, "סעיפים 1.4 ו- 1.6 לחלק 3 בפוליסה הבסיסית, בעניין חריג ספורט אתגרי"]
+      Migdal:
+        verdict: needs_extension
+        why: Diving is on the extreme-sports annex, with a licence or a certified instructor.
+        evidence:
+          - [migdal-sports-extensions, 1, "צלילה (בתנאי שיש לך רישיון צלילה מקיף ותקף כחוק או שאתה צולל בליווי מדריך"]
+      AIG:
+        verdict: needs_extension
+        why: Section 5.5 covers dives to 20 m with a licence or instructor, if bought.
+        evidence:
+          - [aig-policy, 21, "צלילת עומק עד עומק של 20 מטר"]
+          - [aig-policy, 21, "רישיון צלילה מתאים ותקף כחוק או שהוא"]
+
+  - id: scuba-intro
+    question: Introductory dive without a certification, with an instructor
+    answers:
+      PassportCard:
+        verdict: unclear
+        why: The list says diving is covered subject to certification; an intro dive has none.
+        question: Is an introductory dive with a certified instructor, without a diving certificate, covered under chapter 12?
+        evidence:
+          - [passportcard-extreme-sports, 1, "צלילה בכפוף להסמכה"]
+      Harel:
+        verdict: needs_extension
+        why: Diving below 3 m needs chapter 18, and no cover applies without a licence or permit the country requires.
+        evidence:
+          - [harel-extreme-sports, 1, "צלילה לעומק מעל ל-3 מטר"]
+          - [harel-extreme-sports, 1, "הפוליסה לא תכסה אירוע ביטוחי הנובע מהפעילות הספורטיבית אם לא היה למבוטח באותה עת רישיון ו/או היתר"]
+      Phoenix:
+        verdict: excluded
+        why: 1.41 includes diving only with an Israeli diving licence, and 11.2.2 excludes anything outside 1.41.
+        evidence:
+          - [phoenix-policy, 8, "בתנאי שהמבוטח מחזיק ברישיון צלילה ישראלי מתאים ותקף"]
+          - [phoenix-policy, 19, "כל פעילות אתגרית שלא כלולה בהגדרת ספורט אתגרי בסעיף 1.41 לפוליסה הבסיסית"]
+      Clal:
+        verdict: needs_extension
+        why: Diving with breathing equipment is extreme under 1.4; no certification rule was found.
+        evidence:
+          - [clal-policy, 17, "צלילה הדורשת שימוש בציוד נשימה"]
+      Migdal:
+        verdict: needs_extension
+        why: The annex accepts a dive with a certified instructor under the sport-diving law.
+        evidence:
+          - [migdal-sports-extensions, 1, "או שאתה צולל בליווי מדריך מוסמך בהתאם לחוק הצלילה הספורטיבית"]
+      AIG:
+        verdict: needs_extension
+        why: Covered under 5.5 with a certified instructor; 6.9 excludes diving with neither licence nor instructor.
+        evidence:
+          - [aig-policy, 21, "צולל בליווי מדריך מוסמך לפי חוק הצלילה"]
+          - [aig-policy, 32, "צלילה ללא רישיון או בלא ליווי של מדריך מוסמך"]
+
+  - id: scooter-licensed
+    question: Riding a rented 125 cc scooter on roads, holding a licence valid for that class
+    answers:
+      PassportCard:
+        verdict: covered
+        why: Medical cover is excluded only without the matching licence (23.19); the personal-accident extension never covers two-wheelers (21.4.1).
+        evidence:
+          - [passportcard-policy, 60, "אם הנוהג בכלי הרכב האמור נהג בלי רישיון נהיגה המתאים לסוג הרכב המעורב באירוע"]
+          - [passportcard-policy, 55, "כל כלי תחבורה/אמצעי תחבורה דו גלגלי ממונע בין כנהג ובין כנוסע, גם אם הנוהג החזיק ברישיון נהיגה מתאים ותקף במועד התאונה"]
+      Harel:
+        verdict: covered
+        why: 7.23 requires a valid Israeli licence for that motorcycle class, unless the country needs no special licence.
+        evidence:
+          - [harel-policy, 18, "רישיון נהיגה תקף בישראל המתאים לסוג האופנוע המעורב באירוע התאונתי"]
+      Phoenix:
+        verdict: covered
+        why: The only rule found is 7.8, a licence valid in the country of the event.
+        evidence:
+          - [phoenix-policy, 12, "תאונת דרכים כאשר למבוטח שנהג בכלי הרכב לא היה רישיון תקף לארץ האירוע"]
+      Clal:
+        verdict: covered
+        why: The only rule found is 1.14, a licence valid in the country of the event.
+        evidence:
+          - [clal-policy, 18, "תאונת דרכים כאשר למבוטח, שנהג בכלי הרכב לא היה רישיון תקף לארץ האירוע"]
+      Migdal:
+        verdict: covered
+        why: The only rule found is 12.1.11, a licence valid in the country of the event.
+        evidence:
+          - [migdal-policy, 30, "תאונת דרכים כאשר למבוטח שנהג בכלי הרכב לא היה רישיון תקף לארץ האירוע"]
+      AIG:
+        verdict: covered
+        why: 6.13 excludes two-wheelers only without the licence matching the vehicle.
+        evidence:
+          - [aig-policy, 32, "רכיבה בכלי רכב דו-גלגלי או תלת-גלגלי כנהג או כנוסע, אם הנוהג בכלי הרכב האמור נהג בלי רישיון"]
+
+  - id: scooter-car-licence
+    question: Riding a 125 cc scooter while holding only a car licence (B)
+    answers:
+      PassportCard:
+        verdict: excluded
+        why: 23.19 needs a licence matching the vehicle type, or an Israeli or international licence for that type.
+        evidence:
+          - [passportcard-policy, 60, "רכיבה בכלי רכב דו-גלגלי או תלת-גלגלי כנהג או כנוסע, אם הנוהג בכלי הרכב האמור נהג בלי רישיון נהיגה המתאים לסוג הרכב המעורב באירוע"]
+      Harel:
+        verdict: excluded
+        why: 7.23 needs a valid Israeli licence for that motorcycle class.
+        evidence:
+          - [harel-policy, 18, "רישיון נהיגה תקף בישראל המתאים לסוג האופנוע המעורב באירוע התאונתי"]
+      Phoenix:
+        verdict: unclear
+        why: 7.8 asks for a licence valid in the country; whether a car licence is valid for 125 cc there decides it.
+        question: If local law lets a car licence holder ride a 125 cc scooter, is that a valid licence under 7.8?
+        evidence:
+          - [phoenix-policy, 12, "תאונת דרכים כאשר למבוטח שנהג בכלי הרכב לא היה רישיון תקף לארץ האירוע"]
+      Clal:
+        verdict: unclear
+        why: 1.14 asks for a licence valid in the country of the event; depends on local law for 125 cc.
+        question: If local law lets a car licence holder ride a 125 cc scooter, is that a valid licence under 1.14?
+        evidence:
+          - [clal-policy, 18, "תאונת דרכים כאשר למבוטח, שנהג בכלי הרכב לא היה רישיון תקף לארץ האירוע"]
+      Migdal:
+        verdict: unclear
+        why: 12.1.11 asks for a licence valid in the country of the event; depends on local law for 125 cc.
+        question: If local law lets a car licence holder ride a 125 cc scooter, is that a valid licence under 12.1.11?
+        evidence:
+          - [migdal-policy, 30, "תאונת דרכים כאשר למבוטח שנהג בכלי הרכב לא היה רישיון תקף לארץ האירוע"]
+      AIG:
+        verdict: excluded
+        why: 6.13 needs the licence matching the vehicle, except where no licence is required at all.
+        evidence:
+          - [aig-policy, 32, "רכיבה בכלי רכב דו-גלגלי או תלת-גלגלי כנהג או כנוסע, אם הנוהג בכלי הרכב האמור נהג בלי רישיון"]
+          - [aig-policy, 33, "במדינות שבהן לא נדרש רישיון נהיגה בכלי רכב זה"]
+
+  - id: atv-quad
+    question: Guided ATV (quad) ride on dirt tracks
+    answers:
+      PassportCard:
+        verdict: needs_extension
+        why: Driving any vehicle off paved roads is on the extreme-sports list.
+        evidence:
+          - [passportcard-extreme-sports, 1, "נסיעה בכל רכב בדרכים לא סלולות"]
+      Harel:
+        verdict: needs_extension
+        why: ATVs on unpaved roads are on Harel's extreme-sports list (organised jeep tours excepted).
+        evidence:
+          - [harel-extreme-sports, 1, "נסיעה ברכב שטח ממונע או אופנוע שטח או אופני שטח או טרקטורון, בדרכים לא סלולות"]
+      Phoenix:
+        verdict: unclear
+        why: 1.41 names off-road bikes, motocross and 4x4 dirt roads, but not ATVs.
+        question: Is a guided ATV ride on dirt tracks covered under chapter 11 as off-road riding?
+        evidence:
+          - [phoenix-policy, 8, "רכיבת שטח באמצעות אופניים או באמצעות אופנוע או באמצעות מוטוקרוס, נסיעה בדרך עפר 4 X4"]
+      Clal:
+        verdict: unclear
+        why: Clal's list in 1.4 does not name ATVs; it also points to a list on its website, which is not indexed.
+        question: Is an ATV ride an extreme sport under 1.4, and is it covered by the traveller extension?
+        evidence:
+          - [clal-policy, 17, "וכל ספורט אתגרי אחר כמפורט ברשימה שבאתר"]
+      Migdal:
+        verdict: needs_extension
+        why: Riding an ATV off-road is on the annex, subject to a licence.
+        evidence:
+          - [migdal-sports-extensions, 1, "רכיבה על אופנוע / טרקטורון / כלי מוטורי בשטח (כפוף לרישיון כהגדרתו בפוליסה)"]
+      AIG:
+        verdict: needs_extension
+        why: ATVs are in section 5.5.
+        evidence:
+          - [aig-policy, 21, "4X4, טרקטורונים, קארטינג, סקייטבורד"]
+
+  - id: paragliding-tandem
+    question: Tandem paragliding as a passenger with a licensed pilot
+    answers:
+      PassportCard:
+        verdict: unclear
+        why: The list names parachuting (צניחה) and boat-towed parasailing, not paragliding.
+        question: Is tandem paragliding covered under chapter 12, and must it be named in the schedule?
+        evidence:
+          - [passportcard-extreme-sports, 1, "פעילות ספורט גבהים, כולל מוטורית: צניחה"]
+          - [passportcard-extreme-sports, 1, "מצנח רחיפה באמצעות סירה"]
+      Harel:
+        verdict: needs_extension
+        why: Gliding and hovering with parachutes are on Harel's list; 7.10 lets chapter 18 cover such flights.
+        evidence:
+          - [harel-extreme-sports, 1, "גלישה באוויר/ריחוף/דאייה בעזרת מצנחים"]
+          - [harel-policy, 17, "למעט טיסה הכלולה בהגדרת ספורט אתגרי חובבני אם נרכשה הרחבה"]
+      Phoenix:
+        verdict: needs_extension
+        why: Air gliding and hovering are in definition 1.41.
+        evidence:
+          - [phoenix-policy, 8, "גלישה/רחיפה/דאייה אווירית"]
+      Clal:
+        verdict: needs_extension
+        why: Paragliders are named in 1.4.
+        evidence:
+          - [clal-policy, 17, "מצנחי רחיפה וצניחה לסוגיה"]
+      Migdal:
+        verdict: needs_extension
+        why: Paragliding is named on the annex.
+        evidence:
+          - [migdal-sports-extensions, 1, "רחיפה (paragliding)"]
+      AIG:
+        verdict: needs_extension
+        why: Hovering and gliding with parachutes are in 5.5.1.3.
+        evidence:
+          - [aig-policy, 21, "ריחוף/ דאייה בעזרת מצנחים"]
+
+  - id: skydiving-tandem
+    question: Tandem skydive with a licensed operator
+    answers:
+      PassportCard:
+        verdict: needs_extension
+        why: Parachuting is on the heights list.
+        evidence:
+          - [passportcard-extreme-sports, 1, "פעילות ספורט גבהים, כולל מוטורית: צניחה"]
+      Harel:
+        verdict: needs_extension
+        why: Tandem jumps are named on Harel's list.
+        evidence:
+          - [harel-extreme-sports, 1, "צניחה לסוגיה לרבות צניחה חופשית, צניחת בייס עם חליפת כנפיים וצניחת טנדם"]
+      Phoenix:
+        verdict: needs_extension
+        why: Free fall is in definition 1.41.
+        evidence:
+          - [phoenix-policy, 8, "טיסה בכדור פורח, צניחה חופשית"]
+      Clal:
+        verdict: needs_extension
+        why: Parachuting of all kinds is named in 1.4.
+        evidence:
+          - [clal-policy, 17, "מצנחי רחיפה וצניחה לסוגיה"]
+      Migdal:
+        verdict: needs_extension
+        why: Parachuting and free fall with an instructor are on the annex.
+        evidence:
+          - [migdal-sports-extensions, 1, "צניחה, צניחה חופשית בליווי מדריך"]
+      AIG:
+        verdict: needs_extension
+        why: Covered under 5.5.1.3 if organised by a certified operator.
+        evidence:
+          - [aig-policy, 21, "צניחה (בתנאי שהצניחה מאורגנת ומתבצעת"]
+
+  - id: bungee
+    question: Bungee jump
+    answers:
+      PassportCard:
+        verdict: needs_extension
+        why: Bungee is on the heights list.
+        evidence:
+          - [passportcard-extreme-sports, 1, "טיפוס הרים עד גובה 6,000 מטר, באנג’י, אומגה"]
+      Harel:
+        verdict: needs_extension
+        why: Bungee is on Harel's list.
+        evidence:
+          - [harel-extreme-sports, 1, "בנג'י, מזחלות אלפיניות"]
+      Phoenix:
+        verdict: needs_extension
+        why: Bungee is in definition 1.41.
+        evidence:
+          - [phoenix-policy, 8, "באנג'י, טיפוס קירות"]
+      Clal:
+        verdict: needs_extension
+        why: Bungee is named in 1.4.
+        evidence:
+          - [clal-policy, 17, "בנג'י, סנפלינג, רפטינג מדרגה 3 ומעלה"]
+      Migdal:
+        verdict: needs_extension
+        why: Bungee is on the annex.
+        evidence:
+          - [migdal-sports-extensions, 1, "רולר בליידס, באנג'י"]
+      AIG:
+        verdict: needs_extension
+        why: Bungee is in 5.5.1.1.
+        evidence:
+          - [aig-policy, 21, "בליווי מדריך מוסמך, בנג׳י"]
+
+  - id: trek-5000m
+    question: Trekking to 5,000 m without ropes (e.g. a Himalayan trek)
+    answers:
+      PassportCard:
+        verdict: needs_extension
+        why: Trekking is on the land list.
+        evidence:
+          - [passportcard-extreme-sports, 1, "פעילות ספורט יבשתית, כולל מוטורית: טרק"]
+      Harel:
+        verdict: covered
+        why: Trekking is not on Harel's list (it names mountain climbing with ropes); this rests on the absence of an exclusion.
+        question: Is trekking to 5,000 m without ropes outside the extreme-sports list, so covered by the base policy?
+        evidence:
+          - [harel-extreme-sports, 1, "טיפוס הרים לרבות בעזרת חבלים, טיפוס צוקים, טיפוס סלעים, טיפוס קרח, סנפלינג"]
+      Phoenix:
+        verdict: needs_extension
+        why: Trekking is in definition 1.41.
+        evidence:
+          - [phoenix-policy, 8, "נסיעה בדרך עפר 4 X4, טרק"]
+      Clal:
+        verdict: unclear
+        why: Clal's 1.4 list does not name trekking or an altitude; its website list is not indexed.
+        question: Is a trek to 5,000 m without ropes an extreme sport under 1.4?
+        evidence:
+          - [clal-policy, 17, "ענפי ספורט שיש בהם סיכון מוגבר לעומת פעילות ספורט רגילה"]
+      Migdal:
+        verdict: needs_extension
+        why: The annex treats treks from 5,000 m up as extreme; below that they are not listed.
+        evidence:
+          - [migdal-sports-extensions, 1, "גבהים - טרקים החל מגובה 5000 מטרים"]
+      AIG:
+        verdict: needs_extension
+        why: Treks are in 5.5.1.1.
+        evidence:
+          - [aig-policy, 21, "טיפוס קירות, אומגה, פארק חבלים, טרקים"]
+
+  - id: mountaineering
+    question: Guided glacier climb with ropes and crampons to about 4,000 m
+    answers:
+      PassportCard:
+        verdict: needs_extension
+        why: Mountain climbing up to 6,000 m is on the heights list.
+        evidence:
+          - [passportcard-extreme-sports, 1, "טיפוס הרים עד גובה 6,000 מטר"]
+      Harel:
+        verdict: needs_extension
+        why: Mountain climbing with ropes and ice climbing are on Harel's list.
+        evidence:
+          - [harel-extreme-sports, 1, "טיפוס הרים לרבות בעזרת חבלים, טיפוס צוקים, טיפוס סלעים, טיפוס קרח"]
+      Phoenix:
+        verdict: needs_extension
+        why: Mountain and cliff climbing are in 1.41.
+        evidence:
+          - [phoenix-policy, 8, "טיפוס הרים וצוקים"]
+      Clal:
+        verdict: needs_extension
+        why: Climbing that reasonably needs ropes or a guide is extreme under 1.4.
+        evidence:
+          - [clal-policy, 17, "טיפוס הדורש באופן סביר שימוש חבלים או ליווי מדריך"]
+      Migdal:
+        verdict: needs_extension
+        why: Climbing snowy mountains with guides or ropes is on the annex.
+        evidence:
+          - [migdal-sports-extensions, 1, "טיפוס הרים על הר מושלג, טיפוס הרים בעזרת מדריכים ו/או חבלים"]
+      AIG:
+        verdict: needs_extension
+        why: Mountain climbing with ropes is in 5.5.1.1.
+        evidence:
+          - [aig-policy, 21, "5.5.1.1 פעילות ספורט יבשתית- טיפוס הרים בעזרת חבלים"]
+
+  - id: via-ferrata
+    question: Via ferrata, grade K3, without a guide
+    answers:
+      PassportCard:
+        verdict: unclear
+        why: Via ferrata is not named; nearest are mountain and wall climbing.
+        question: Is a K3 via ferrata without a guide covered under chapter 12?
+        evidence:
+          - [passportcard-extreme-sports, 1, "טיפוס הרים עד גובה 6,000 מטר, באנג’י, אומגה, טיפוס קירות"]
+      Harel:
+        verdict: unclear
+        why: Not named; it may count as cliff or rock climbing.
+        question: Is a via ferrata "טיפוס צוקים" under chapter 18, and is it covered without a guide?
+        evidence:
+          - [harel-extreme-sports, 1, "טיפוס צוקים, טיפוס סלעים"]
+      Phoenix:
+        verdict: unclear
+        why: Not named; it may count as mountain and cliff climbing in 1.41.
+        question: Is a via ferrata within "טיפוס הרים וצוקים" in 1.41?
+        evidence:
+          - [phoenix-policy, 8, "טיפוס הרים וצוקים"]
+      Clal:
+        verdict: unclear
+        why: A via ferrata uses a lanyard set, not ropes; 1.4 covers climbing that needs ropes or a guide.
+        question: Is a self-guided via ferrata an extreme sport under 1.4?
+        evidence:
+          - [clal-policy, 17, "טיפוס הדורש באופן סביר שימוש חבלים או ליווי מדריך"]
+      Migdal:
+        verdict: unclear
+        why: Not named; nearest is climbing on cliffs.
+        question: Is a via ferrata covered under the extreme-sports extension as cliff climbing?
+        evidence:
+          - [migdal-sports-extensions, 1, "טיפוס על צוקים או גלישה מהם"]
+      AIG:
+        verdict: unclear
+        why: 5.5.1.1 ties cliff climbing and rappelling to a certified guide; a self-guided via ferrata may fall outside it.
+        question: Is a self-guided via ferrata covered under 5.5, or does it need a certified guide?
+        evidence:
+          - [aig-policy, 21, "טיפוס על צוקים או גלישה מהם (סנפלינג) בליווי מדריך מוסמך"]
+
+  - id: rafting
+    question: Commercial white-water rafting, class III
+    answers:
+      PassportCard:
+        verdict: needs_extension
+        why: Rafting is on the water list.
+        evidence:
+          - [passportcard-extreme-sports, 1, "סקי מים, ראפטינג, שייט קיאקים"]
+      Harel:
+        verdict: covered
+        why: Harel's list names only competitive rafting; this rests on the absence of an exclusion.
+        question: Is non-competitive class III rafting outside the extreme-sports list?
+        evidence:
+          - [harel-extreme-sports, 1, "קייט סרפינג, רפטינג תחרותי"]
+      Phoenix:
+        verdict: needs_extension
+        why: Rafting is in 1.41.
+        evidence:
+          - [phoenix-policy, 8, "שייט קיאקים, רפטינג"]
+      Clal:
+        verdict: needs_extension
+        why: Rafting from class 3 is extreme under 1.4.
+        evidence:
+          - [clal-policy, 17, "רפטינג מדרגה 3 ומעלה"]
+      Migdal:
+        verdict: needs_extension
+        why: Rafting is on the annex.
+        evidence:
+          - [migdal-sports-extensions, 1, "קייט סרפינג, רפטינג, קיאקים"]
+      AIG:
+        verdict: needs_extension
+        why: Rafting is in 5.5.1.2.
+        evidence:
+          - [aig-policy, 21, "סאפ, ראפטינג, שייט קיאקים"]
+
+  - id: kitesurf
+    question: Kitesurfing lesson
+    answers:
+      PassportCard:
+        verdict: needs_extension
+        why: Kitesurfing is on the water list.
+        evidence:
+          - [passportcard-extreme-sports, 1, "קייטסרפינג"]
+      Harel:
+        verdict: needs_extension
+        why: Kitesurfing is on Harel's list.
+        evidence:
+          - [harel-extreme-sports, 1, "סקי מים, אופנוע ים, קייט סרפינג"]
+      Phoenix:
+        verdict: needs_extension
+        why: Kite surfing is in 1.41.
+        evidence:
+          - [phoenix-policy, 8, "גלישת קיט"]
+      Clal:
+        verdict: needs_extension
+        why: Kitesurfing is named in 1.4.
+        evidence:
+          - [clal-policy, 17, "כדור פורח, קייט סרפינג"]
+      Migdal:
+        verdict: needs_extension
+        why: Kitesurfing is on the annex.
+        evidence:
+          - [migdal-sports-extensions, 1, "וויקבורד, קייט סרפינג"]
+      AIG:
+        verdict: unclear
+        why: 5.5.1.2 names surfing, SUP and air gliding, not kitesurfing.
+        question: Is kitesurfing covered under 5.5, and if so under which item?
+        evidence:
+          - [aig-policy, 21, "גלישת גלים, סאפ, ראפטינג"]
+
+  - id: rented-car-excess
+    question: Refund of the excess paid to the rental company after an accident with a rented car
+    answers:
+      PassportCard:
+        verdict: needs_extension
+        why: Chapter 18 refunds the excess up to $1,500, if bought.
+        evidence:
+          - [passportcard-policy, 47, "פרק 18 - הרחבה להחזר דמי השתתפות עצמית לרכב"]
+          - [passportcard-policy, 47, "עד לסך של $1,500"]
+      Harel:
+        verdict: needs_extension
+        why: Chapter 24 covers the excess for an accident with a rented car or camper.
+        evidence:
+          - [harel-policy, 29, "פרק 24 ביטול השתתפות עצמית במקרה של נזק תאונתי מרכב/קראון שכור"]
+      Phoenix:
+        verdict: needs_extension
+        why: Chapter 17, if bought; it does not cover two-wheelers.
+        evidence:
+          - [phoenix-policy, 22, "החזר דמי השתתפות עצמית לרכב /רכב קרוואן אחוד שכור בחו"]
+          - [phoenix-policy, 22, "רכב פרטי או מסחרי (שאינו רכב דו גלגלי)"]
+      Clal:
+        verdict: needs_extension
+        why: The rented-car excess extension, if bought; no two-wheelers or campers.
+        evidence:
+          - [clal-policy, 39, "הרחבה לביטול השתתפות עצמית לרכב"]
+          - [clal-policy, 39, "והכל למעט רכב דו גלגלי וקרוואן"]
+      Migdal:
+        verdict: needs_extension
+        why: Chapter 11, if bought.
+        evidence:
+          - [migdal-policy, 29, "פרק 11 - הרחבה לביטול דמי השתתפות עצמית לרכב שכור"]
+      AIG:
+        verdict: needs_extension
+        why: Section 5.11, an optional extension.
+        evidence:
+          - [aig-policy, 26, "5.11 ביטול השתתפות עצמית לרכב שכור בחו"]
+
+  - id: phone-theft
+    question: Theft of a mobile phone abroad
+    answers:
+      PassportCard:
+        verdict: needs_extension
+        why: Chapter 16, if bought.
+        evidence:
+          - [passportcard-policy, 45, "פרק 16 - הרחבה לכיסוי גניבת מכשיר סלולארי"]
+      Harel:
+        verdict: needs_extension
+        why: Chapter 22, if bought.
+        evidence:
+          - [harel-policy, 48, "פרק 22: הרחבה לאובדן או גניבה של טלפון נייד"]
+      Phoenix:
+        verdict: needs_extension
+        why: Chapter 14 covers phone theft abroad.
+        evidence:
+          - [phoenix-policy, 3, "פרק 14 גניבה של מכשיר טלפון סלולארי בחו"]
+      Clal:
+        verdict: needs_extension
+        why: The one-electronic-device extension lists phones.
+        evidence:
+          - [clal-policy, 36, "מחשב נישא, מצלמה, טלפון סלולרי"]
+      Migdal:
+        verdict: needs_extension
+        why: Section 9.6, if bought.
+        evidence:
+          - [migdal-policy, 27, "9.6 הרחבה לאבדן/גניבה של מכשיר סלולרי או GPS"]
+      AIG:
+        verdict: needs_extension
+        why: Section 5.8, an optional extension.
+        evidence:
+          - [aig-policy, 24, "5.8 גניבת מכשיר טלפון נייד"]
+
+  - id: laptop-theft
+    question: Theft of a laptop abroad
+    answers:
+      PassportCard:
+        verdict: needs_extension
+        why: Chapter 15, if bought.
+        evidence:
+          - [passportcard-policy, 43, "פרק 15 - הרחבה לגניבה של מחשב נייד/מחשב לוח"]
+      Harel:
+        verdict: needs_extension
+        why: Chapter 21, if bought.
+        evidence:
+          - [harel-policy, 3, "פרק 21: הרחבה לאובדן או גניבה של מחשב אישי נישא"]
+      Phoenix:
+        verdict: needs_extension
+        why: Chapter 16 covers laptop theft abroad.
+        evidence:
+          - [phoenix-policy, 21, "גניבה של מחשב נייד/מחשב לוח (טאבלט) בחו"]
+      Clal:
+        verdict: needs_extension
+        why: The one-electronic-device extension lists laptops.
+        evidence:
+          - [clal-policy, 36, "מחשב נישא, מצלמה, טלפון סלולרי"]
+      Migdal:
+        verdict: needs_extension
+        why: Section 9.5, if bought.
+        evidence:
+          - [migdal-policy, 5, "מחשב אישי נישא/טאבלט"]
+      AIG:
+        verdict: unclear
+        why: No laptop extension was found; laptops appear only in the claim-documents list.
+        question: Which AIG cover, if any, pays for a stolen laptop?
+        evidence:
+          - [aig-policy, 34, "כבודה, טלפון נייד ומחשב אישי נישא"]
+
+  - id: pregnancy
+    question: Known pregnancy; a complication at week 20 needs treatment abroad
+    answers:
+      PassportCard:
+        verdict: needs_extension
+        why: Chapter 11 covers pregnancy expenses to week 32, if bought.
+        evidence:
+          - [passportcard-policy, 40, "פרק 11 - הרחבה להוצאות הריון עד שבוע 32"]
+      Harel:
+        verdict: needs_extension
+        why: Chapter 17 covers to week 32, for insured women up to age 42.
+        evidence:
+          - [harel-policy, 42, "ואשר הינה בהריון עד שבוע 32 (כולל) ביום האירוע"]
+          - [harel-policy, 3, "פרק 17: הרחבה להיריון עד שבוע 32 למבוטחת שגילה עד 42 שנים"]
+      Phoenix:
+        verdict: needs_extension
+        why: Chapter 18 covers an unexpected complication to week 32, up to age 46.
+        evidence:
+          - [phoenix-policy, 3, "עד שבוע 32 של מבוטחת שגילה עד 46 שנים"]
+      Clal:
+        verdict: needs_extension
+        why: The pregnancy extension runs to week 30.
+        evidence:
+          - [clal-policy, 32, "הרחבה להריון עד שבוע 30"]
+      Migdal:
+        verdict: needs_extension
+        why: Section 8.2 covers to week 32, if bought.
+        evidence:
+          - [migdal-policy, 22, "8.2 הרחבה להריון למבוטחת עד שבוע 32"]
+      AIG:
+        verdict: excluded
+        why: Pregnancy cover in 2.4 applies only in the first 12 weeks; no longer extension was found.
+        question: Does AIG sell a pregnancy extension past week 12?
+        evidence:
+          - [aig-policy, 12, "כאמור יכוסו בתנאי שהאירוע ארע במהלך 12 השבועות"]
+
+  - id: pre-existing
+    question: A known chronic condition flares up abroad
+    answers:
+      PassportCard:
+        verdict: needs_extension
+        why: Chapter 10 covers the worsening of a pre-existing condition, if bought.
+        evidence:
+          - [passportcard-policy, 40, "פרק 10 - הרחבה לכיסוי החמרה של מצב רפואי קודם"]
+      Harel:
+        verdict: needs_extension
+        why: Chapter 16, if bought.
+        evidence:
+          - [harel-policy, 3, "פרק 16: הרחבה להחמרה של מצב רפואי קודם"]
+      Phoenix:
+        verdict: needs_extension
+        why: Chapter 19, if bought.
+        evidence:
+          - [phoenix-policy, 3, "פרק 19 החמרה של מצב רפואי קודם בחו"]
+      Clal:
+        verdict: needs_extension
+        why: The existing-condition extension.
+        evidence:
+          - [clal-policy, 4, "הרחבה למצב בריאותי קיים"]
+      Migdal:
+        verdict: needs_extension
+        why: The base policy does not cover existing conditions; section 8.3 does, if bought.
+        evidence:
+          - [migdal-policy, 2, "אינו כולל כיסוי למצב רפואי קיים או להחמרתו אלא אם צוינו כיסויים"]
+          - [migdal-policy, 23, "8.3 הרחבה להחמרה של מצב רפואי קודם"]
+      AIG:
+        verdict: needs_extension
+        why: Section 5.4, an optional extension.
+        evidence:
+          - [aig-policy, 20, "5.4 החמרה של מצב רפואי קודם"]
+
+  - id: terror-bystander
+    question: Injured in a terror attack as a bystander
+    answers:
+      PassportCard:
+        verdict: covered
+        why: 23.18 says harm from a terror attack without active part is not excluded.
+        evidence:
+          - [passportcard-policy, 60, "נזק שנגרם למבוטח כתוצאה מפעולת טרור בה לא לקח חלק פעיל - אינו מוחרג"]
+      Harel:
+        verdict: covered
+        why: 7.12 excludes only active participation.
+        evidence:
+          - [harel-policy, 17, "השתתפות פעילה של המבוטח בפעולה משטרתית, מחתרתית, מהפיכה, מרד, פרעות, מהומות, חבלה, טרור"]
+      Phoenix:
+        verdict: covered
+        why: 7.3 excludes these events only where the insured took an active part.
+        evidence:
+          - [phoenix-policy, 12, "ובתנאי שהמבוטח נטל בהם חלק פעיל"]
+      Clal:
+        verdict: covered
+        why: 1.8 excludes these events only where the insured took an active part.
+        evidence:
+          - [clal-policy, 17, "ובתנאי שהמבוטח נטל בהם חלק פעיל"]
+      Migdal:
+        verdict: covered
+        why: 12.1.3 excludes only active participation.
+        evidence:
+          - [migdal-policy, 30, "השתתפות פעילה של המבוטח בפעולות כגון אלו"]
+      AIG:
+        verdict: covered
+        why: 6.5 states the policy covers events caused by terror.
+        evidence:
+          - [aig-policy, 31, "מובהר במפורש כי פוליסה זו תכסה אירועים עקב טרור"]
+
+  - id: war-cancellation
+    question: Cancelling before departure because war breaks out in Israel and flights stop
+    answers:
+      PassportCard:
+        verdict: unclear
+        why: The cancellation reasons in 8.5 do not mention war; no clause was found.
+        question: Does chapter 8 refund a cancellation caused by war in Israel or the airport closing?
+        evidence:
+          - [passportcard-policy, 32, "המבוטח יהיה זכאי לשיפוי בגין ביטול נסיעה שנגרם"]
+      Harel:
+        verdict: unclear
+        why: The chapter 15 reasons found (death, illness, reserve duty) do not mention war.
+        question: Does chapter 15 refund a cancellation caused by war in Israel or the airport closing?
+        evidence:
+          - [harel-policy, 34, "15.2. התחייבות המבטח בגין הפסד תשלומים בעקבות ביטול נסיעה"]
+      Phoenix:
+        verdict: excluded
+        why: 10.6.9 excludes cancellation due to officially declared war, in Israel too.
+        evidence:
+          - [phoenix-policy, 19, "קיצור או ביטול נסיעה עקב אסון טבע ,פרעות ומהומות או עקב מצב מלחמה שהוכרזה באופן רשמי, בישראל"]
+      Clal:
+        verdict: unclear
+        why: The cancellation reasons found do not mention war.
+        question: Does the cancellation extension refund a cancellation caused by war in Israel?
+        evidence:
+          - [clal-policy, 22, "הרחבה לביטול נסיעה (כולל הרחבת קורונה)"]
+      Migdal:
+        verdict: unclear
+        why: 8.1.1.2.3 covers flights cancelled by declared war in destination countries only.
+        question: Is a cancellation caused by war in Israel covered, given 8.1.1.2.3 names destination countries?
+        evidence:
+          - [migdal-policy, 18, "מלחמה שהוכרזה באופן רשמי בארצות היעד המונעות קיום"]
+      AIG:
+        verdict: unclear
+        why: The cancellation reasons found in 5.1 do not mention war.
+        question: Does 5.1 refund a cancellation caused by war in Israel?
+        evidence:
+          - [aig-policy, 18, "5.1 הפסד תשלומים בגין ביטול נסיעה"]
+
+  - id: cancellation-illness
+    question: Cancelling because the traveller falls ill a week before departure
+    answers:
+      PassportCard:
+        verdict: needs_extension
+        why: 8.5.4 covers illness in the week before departure, under the chapter 8 extension.
+        evidence:
+          - [passportcard-policy, 33, "8.5.4 תאונה או מחלה של המבוטח שאירעה בשבוע שקדם"]
+          - [passportcard-policy, 32, "פרק 8 - הרחבה לכיסוי הוצאות ביטול נסיעה"]
+      Harel:
+        verdict: needs_extension
+        why: 15.2.1.2, under the chapter 15 extension.
+        evidence:
+          - [harel-policy, 34, "מחלה או תאונה של המבוטח ו/או בן משפחה קרוב ו/או מלווה"]
+      Phoenix:
+        verdict: needs_extension
+        why: 10.2.4 covers a documented condition that appeared in the 7 days before.
+        evidence:
+          - [phoenix-policy, 17, "10.2.4 מצב רפואי מתועד שארע לראשונה או התגלה אצל המבוטח או בן משפחה קרוב בשבוע (7 ימים)"]
+      Clal:
+        verdict: needs_extension
+        why: Reason (2) needs a specialist's written instruction not to travel.
+        evidence:
+          - [clal-policy, 22, "הוראה מפורשת בכתב מרופא מומחה כי המבוטח אינו יכול לנסוע"]
+      Migdal:
+        verdict: needs_extension
+        why: 8.1.1.2.2, under the cancellation extension.
+        evidence:
+          - [migdal-policy, 18, "8.1.1.2.2 מחלה של המבוטח או בן משפחה קרוב שאינה כלולה בחריגי"]
+      AIG:
+        verdict: needs_extension
+        why: Reason 3 of section 5.1, an optional extension.
+        evidence:
+          - [aig-policy, 18, "3. ביטול נסיעה עקב מחלה של המבוטח שאירעה"]
+
+  - id: cancellation-relative
+    question: Cancelling because a close relative dies or is hospitalised
+    answers:
+      PassportCard:
+        verdict: needs_extension
+        why: 8.5.1 (death) and 8.5.3 (accident or illness), under chapter 8.
+        evidence:
+          - [passportcard-policy, 33, "8.5.1 מוות של המבוטח ו/או בן משפחה קרוב ו/או מתלווה"]
+      Harel:
+        verdict: needs_extension
+        why: 15.2.1.1, under chapter 15.
+        evidence:
+          - [harel-policy, 34, "15.2.1.1. מוות של המבוטח ו/או בן משפחה קרוב ו/או מלווה לנסיעה"]
+      Phoenix:
+        verdict: needs_extension
+        why: 10.2.4 covers a documented condition of a close relative in the week before; no death clause was read.
+        evidence:
+          - [phoenix-policy, 17, "התגלה אצל המבוטח או בן משפחה קרוב בשבוע (7 ימים)"]
+      Clal:
+        verdict: needs_extension
+        why: Reason (1) covers unexpected death or hospitalisation of a close relative.
+        evidence:
+          - [clal-policy, 22, "מוות בלתי צפוי או אשפוז בלתי צפוי של המבוטח או של בן משפחה קרוב"]
+      Migdal:
+        verdict: needs_extension
+        why: 8.1.1.2.1, under the cancellation extension.
+        evidence:
+          - [migdal-policy, 18, "8.1.1.2.1 מותו של המבוטח או בן משפחה קרוב מסיבה שאינה כלולה"]
+      AIG:
+        verdict: needs_extension
+        why: Reason 5 of section 5.1.
+        evidence:
+          - [aig-policy, 18, "5. ביטול נסיעה עקב מוות או אשפוז של בן משפחה"]
+
+  - id: reserve-duty
+    question: Cancelling because of an emergency reserve call-up (צו 8)
+    answers:
+      PassportCard:
+        verdict: needs_extension
+        why: 8.5.5, under chapter 8.
+        evidence:
+          - [passportcard-policy, 33, "8.5.5 גיוס חרום של המבוטח לשרות מילואים על פי צו"]
+      Harel:
+        verdict: needs_extension
+        why: 15.2.1.5, under chapter 15.
+        evidence:
+          - [harel-policy, 35, "ביטול נסיעה למבוטח הנמצא בשירות מילואים מכוח סעיפים"]
+      Phoenix:
+        verdict: needs_extension
+        why: 10.2.6 covers a call-up under sections 8 or 9 of the reserve law.
+        evidence:
+          - [phoenix-policy, 18, "10.2.6 ביטול נסיעה עקב זימון המבוטח לשרות מילואים של המבוטח מכח סעיפים 8 או 9 לחוק שירות"]
+      Clal:
+        verdict: needs_extension
+        why: Reason (3) of the cancellation extension.
+        evidence:
+          - [clal-policy, 22, "קריאתו של המבוטח לשרות מילואים מכוח סעיפים 8 או 9 לחוק שירות המילואים"]
+      Migdal:
+        verdict: needs_extension
+        why: 8.1.1.2.5, under the cancellation extension.
+        evidence:
+          - [migdal-policy, 18, "ביטול נסיעה עקב גיוס חרום של המבוטח לשרות מילואים על פי"]
+      AIG:
+        verdict: needs_extension
+        why: Reason 8 of section 5.1.
+        evidence:
+          - [aig-policy, 19, "8. ביטול נסיעה עקב קריאתו של המבוטח לשירות"]
+
+  - id: search-rescue
+    question: Search and rescue after going missing on a mountain
+    answers:
+      PassportCard:
+        verdict: needs_extension
+        why: Chapter 5 applies only if printed in the schedule, up to $250,000.
+        evidence:
+          - [passportcard-policy, 22, "הביטוח לפי פרק זה תקף רק אם צוין במפורש בדף פרטי הביטוח."]
+          - [passportcard-policy, 22, "עד לסך של $250,000"]
+      Harel:
+        verdict: covered
+        why: Chapter 5 is included, in countries where it can operate.
+        evidence:
+          - [harel-policy, 13, "הכיסוי בגין חיפוש איתור וחילוץ יחול במדינות שבהן ניתן להפעיל כיסוי זה והוא כלול"]
+      Phoenix:
+        verdict: covered
+        why: Chapter 4 is part of the base policy unless the insured removed it.
+        evidence:
+          - [phoenix-policy, 9, "פרק זה כלול בפוליסה הבסיסית, אלא אם כן ביקש המבוטח להסירו"]
+      Clal:
+        verdict: needs_extension
+        why: Search and rescue is for buyers of that cover.
+        evidence:
+          - [clal-policy, 3, "איתור חיפוש וחילוץ נעדרים (לרוכשים כיסוי זה)"]
+      Migdal:
+        verdict: covered
+        why: Included unless the insured asked to remove it.
+        evidence:
+          - [migdal-policy, 3, "הרחבה לאיתור וחילוץ - כלולה בפוליסה אלא אם ביקש המבוטח"]
+      AIG:
+        verdict: needs_extension
+        why: Chapter 4 applies only if printed in the policy spec.
+        evidence:
+          - [aig-policy, 13, "הכיסוי הביטוחי על פי פרק זה יחול אך ורק אם צוין במפורש במפרט הפוליסה"]
+
+  - id: baggage-delay
+    question: Checked bag arrives more than 12 hours late; buying essentials
+    answers:
+      PassportCard:
+        verdict: needs_extension
+        why: 6.3.5 sits in the chapter 6 baggage extension.
+        evidence:
+          - [passportcard-policy, 25, "6.3.5 במקרה של איחור העולה על 12 שעות בהגעת הכבודה"]
+          - [passportcard-policy, 24, "הביטוח לפי פרק זה תקף רק אם נרכש על ידי המבוטח ואם צוין במפורש"]
+      Harel:
+        verdict: needs_extension
+        why: 14.4.3 sits in the chapter 14 baggage extension.
+        evidence:
+          - [harel-policy, 31, "רכישת פריטים חיוניים במקרה של איחור בהגעת כבודה"]
+      Phoenix:
+        verdict: needs_extension
+        why: 9.2.6 sits in the chapter 9 baggage extension.
+        evidence:
+          - [phoenix-policy, 16, "מקרה הביטוח - איחור העולה על 12 שעות בהגעת הכבודה ליעדה הסופי בחו"]
+          - [phoenix-policy, 16, "הרחבה זו הינה בתוקף בתנאי שנרכשה על ידי בעל הפוליסה"]
+      Clal:
+        verdict: needs_extension
+        why: The baggage extension pays $170 for essentials when baggage is late.
+        evidence:
+          - [clal-policy, 34, "בגין רכישת בגדים וחפצים חיוניים אחרים במקרה של איחור בהגעת מטען"]
+      Migdal:
+        verdict: needs_extension
+        why: 9.4 sits in the baggage extension.
+        evidence:
+          - [migdal-policy, 26, "9.4 איחור בהגעת כבודה - עד לסכום הנקוב בתמצית הכיסויים בפוליסה"]
+      AIG:
+        verdict: needs_extension
+        why: 5.10 covers a delay over 12 hours, on the flight from Israel only.
+        evidence:
+          - [aig-policy, 26, "5.10 כיסוי לעיכוב כבודה בטיסת המבוטח מישראל לחו"]
+          - [aig-policy, 26, "במקרה של עיכוב העולה על 12 שעות בהגעת כבודה"]
+
+  - id: flight-delay
+    question: Compensation for a long flight delay
+    answers:
+      PassportCard:
+        verdict: excluded
+        why: 23.27 excludes consequential losses, naming delays.
+        evidence:
+          - [passportcard-policy, 61, "עיכובים, פגיעה במוניטין"]
+      Harel:
+        verdict: excluded
+        why: 7.21 excludes consequential losses including delay.
+        evidence:
+          - [harel-policy, 18, "ביטול עסקה לרבות השהייה, עיכוב"]
+      Phoenix:
+        verdict: excluded
+        why: 7.6 excludes consequential losses including delay.
+        evidence:
+          - [phoenix-policy, 12, "עיכוב, פשיטת רגל, אובדן ימי עבודה ושכר"]
+      Clal:
+        verdict: excluded
+        why: Indirect and consequential losses, including delay, are not covered.
+        evidence:
+          - [clal-policy, 19, "עיכוב, אובדן שוק"]
+      Migdal:
+        verdict: excluded
+        why: 12.1.8 excludes consequential losses of any kind.
+        evidence:
+          - [migdal-policy, 30, "נזק/נזקים תוצאתיים מכל מין וסוג שהוא"]
+      AIG:
+        verdict: unclear
+        why: Only a special delay cover (4.2, earthquakes and similar events on the way home) was found.
+        question: Does AIG pay anything for an ordinary long flight delay?
+        evidence:
+          - [aig-policy, 16, "4.2 כיסוי במקרה של עיכוב בחזרה לישראל בשל רעידת"]
+
+  - id: alcohol
+    question: Injured on a night out while drunk (a one-off)
+    answers:
+      PassportCard:
+        verdict: unclear
+        why: The general exclusions name drug use, not alcohol.
+        question: Is an injury while drunk, on a one-off night out, covered?
+        evidence:
+          - [passportcard-policy, 61, "23.26 שימוש בסמים"]
+      Harel:
+        verdict: unclear
+        why: 7.17 excludes alcoholism, which may not cover a one-off.
+        question: Does 7.17 apply to a single episode of drunkenness?
+        evidence:
+          - [harel-policy, 17, "7.17. אלכוהוליזם, שימוש בסמים."]
+      Phoenix:
+        verdict: unclear
+        why: 7.5 excludes alcoholism, which may not cover a one-off.
+        question: Does 7.5 apply to a single episode of drunkenness?
+        evidence:
+          - [phoenix-policy, 12, "7.5 אלכוהוליזם, שימוש בסמים"]
+      Clal:
+        verdict: unclear
+        why: The exclusions name drug use; no alcohol clause was found.
+        question: Is an injury while drunk covered?
+        evidence:
+          - [clal-policy, 18, "שימוש בסמים, למעט מקרה בו השימוש בוצע בהתאם להוראות רופא"]
+      Migdal:
+        verdict: excluded
+        why: 12.1.12 excludes drunkenness.
+        evidence:
+          - [migdal-policy, 30, "12.1.12 שכרות ו/או שימוש בסמים."]
+      AIG:
+        verdict: unclear
+        why: 6.11 excludes chronic drunkenness, which may not cover a one-off.
+        question: Does 6.11 apply to a single episode of drunkenness?
+        evidence:
+          - [aig-policy, 32, "6.11 שכרות כרונית, שימוש בסמים"]
+
+  - id: epidemic-isolation
+    question: Forced isolation abroad because of an epidemic disease
+    answers:
+      PassportCard:
+        verdict: needs_extension
+        why: Chapter 9 covers isolation abroad and extended stay due to an epidemic, if bought.
+        evidence:
+          - [passportcard-policy, 35, "הרחבה להוצאות מיוחדות - ביטול נסיעה, בידוד בחו"]
+      Harel:
+        verdict: needs_extension
+        why: Epidemic cover is sold for an additional premium.
+        evidence:
+          - [harel-policy, 2, "למקרה של מגיפה תמורת דמי ביטוח נוספים"]
+      Phoenix:
+        verdict: unclear
+        why: An epidemic is defined, but the isolation cover was not read.
+        question: Which Phoenix chapter pays for extra nights in isolation abroad, and is it in the base policy?
+        evidence:
+          - [phoenix-policy, 7, "1.34 מגיפה מצב בו יש עלייה פתאומית במקרי תחלואה"]
+      Clal:
+        verdict: unclear
+        why: A clause mentions mandatory isolation for fear of corona; its scope was not read.
+        question: Does the base policy pay for isolation abroad due to an epidemic other than corona?
+        evidence:
+          - [clal-policy, 11, "הביטוח עקב חובה להיות בבידוד עקב חשש להדבקות בקורונה"]
+      Migdal:
+        verdict: unclear
+        why: The coverage table lists lodging during an epidemic event; whether it is base or extension was not read.
+        question: Is the epidemic lodging cover in the base Masa Olami policy?
+        evidence:
+          - [migdal-policy, 4, "במקרה של אירוע רפואי עקב מגיפה 150$ ליום הוצאות לינה"]
+      AIG:
+        verdict: needs_extension
+        why: Epidemic cover applies after buying an extension.
+        evidence:
+          - [aig-policy, 30, "של מגיפה כהגדרתה בפוליסה, לאחר רכישת הרחבה"]

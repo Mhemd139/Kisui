@@ -1,0 +1,652 @@
+# Car rental eval for Italy, DRAFT. Drafted by Claude on 2026-10-01 from the indexed documents.
+# status: unreviewed. These are not ground truth and no accuracy number is reported.
+# `npm run eval` checks only that every quote is found on its cited page.
+# Profile: driver aged 23, Israeli licence plus IDP, physical Visa debit card in their own name.
+# not_found: companies whose indexed documents say nothing on the rule (a question to send, not a verdict).
+# No answers for Sixt: its Italy terms refused automated access.
+status: unreviewed
+drafted_on: 2026-10-01
+items:
+  - id: min-age
+    question: Can a 23-year-old rent an economy car?
+    answers:
+      Maggiore:
+        verdict: covered
+        why: Minimum 21 with a licence held 2 years (19 and 1 year for some small groups).
+        evidence:
+          - [maggiore-italy-conditions, 2, "need to be at least 21 years old and have held a full, valid driving licence for at least 2 years at the start of your rental"]
+      Locauto:
+        verdict: covered
+        why: Groups A, B, C and E start at 19.
+        evidence:
+          - [locauto-special-terms, 3, "A, B, C, E 19"]
+      Enterprise:
+        verdict: covered
+        why: Economy, compact and intermediate groups start at 21.
+        evidence:
+          - [enterprise-italy-rome-eur, 1, "Economy, Compact, Intermediate car groups and Commercial Vans are available for 21 years old renters."]
+      Avis:
+        verdict: covered
+        why: Minimum 21, outside the large groups.
+        evidence:
+          - [avis-italy-requirements, 1, "L’età minima richiesta è di 21 anni"]
+      Budget:
+        verdict: covered
+        why: Minimum 21, outside groups H and L.
+        evidence:
+          - [budget-italy-requirements, 1, "Clientela generica: 21 anni, (con l’esclusione delle auto di gruppo H ed L)"]
+      Europcar:
+        verdict: unclear
+        why: The age table did not extract from the PDF; only its lead-in and footnotes did.
+        question: What is the minimum age for an economy car in Italy?
+        evidence:
+          - [europcar-italy-terms, 5, "in Italy the minimum age required by Europcar are:"]
+    not_found: [Hertz]
+
+  - id: young-fee
+    question: Young-driver surcharge for a 23-year-old
+    answers:
+      Maggiore:
+        verdict: needs_extension
+        why: Every driver under 25 pays €21.39 to €25.66 per day.
+        evidence:
+          - [maggiore-italy-conditions, 2, "If you – or any of your drivers – are under 25 when you pick up the vehicle"]
+          - [maggiore-italy-conditions, 2, "between €21.39 (Vat included) and € 25.66 (Vat and airport/city surcharges included), per day, for each driver"]
+      Locauto:
+        verdict: needs_extension
+        why: €22 per day for ages 19 to 24.
+        evidence:
+          - [locauto-special-terms, 1, "Supplemento guida giovane (19-24 anni) 22,00 € Al giorno"]
+      Enterprise:
+        verdict: needs_extension
+        why: €11 per day before VAT for ages 22 to 24.
+        evidence:
+          - [enterprise-italy-rome-eur, 1, "A young drivers fee of 11.00 EUR excluding VAT and airport/railway fees (where applicable) apply to 22-24 years old renters."]
+      Hertz:
+        verdict: needs_extension
+        why: A surcharge applies under 25; the amount is not stated in these terms.
+        evidence:
+          - [hertz-italy-terms, 11, "Will apply if you or any additional driver is under 25 years old."]
+      Avis:
+        verdict: needs_extension
+        why: €20.17 per day, charged for at most 15 days.
+        evidence:
+          - [avis-italy-requirements, 1, "previo il pagamento di un supplemento giornaliero di Euro 20,17"]
+      Budget:
+        verdict: needs_extension
+        why: €16.53 per day, charged for at most 15 days.
+        evidence:
+          - [budget-italy-requirements, 1, "previo supplemento di € 16.53 per giorno di noleggio, con un addebito massimo pari a 15 giorni"]
+      Europcar:
+        verdict: needs_extension
+        why: €24 per day for ages 18 to 24, for at most 15 days.
+        evidence:
+          - [europcar-italy-price-list, 11, "18-24 years: € 24,00 per day (max 15 days per rental)"]
+
+  - id: licence-held
+    question: How long must a 23-year-old have held the licence?
+    answers:
+      Maggiore:
+        verdict: needs_extension
+        why: 12 months, or 2 years for groups above medium size at ages 21 to 24.
+        evidence:
+          - [maggiore-italy-conditions, 14, "All drivers must have held their licences for at least 12 months (2 years if aged 21-24 and renting a vehicle category bigger than medium size)."]
+      Locauto:
+        verdict: needs_extension
+        why: Licences issued after 14 December 2024 may drive only groups BY and CY.
+        evidence:
+          - [locauto-special-terms, 3, "I conducenti che hanno conseguito la patente successivamente al 14 dicembre 2024 possono guidare esclusivamente veicoli di categoria BY e CY"]
+      Enterprise:
+        verdict: needs_extension
+        why: 3 years for every driver.
+        evidence:
+          - [enterprise-italy-rome-eur, 1, "All drivers must have held their license for at least 3 year."]
+      Avis:
+        verdict: needs_extension
+        why: 2 years at the minimum age of 21.
+        evidence:
+          - [avis-italy-requirements, 1, "in possesso di Patente di Guida rilasciata da almeno due anni"]
+      Budget:
+        verdict: needs_extension
+        why: 2 years at the minimum age of 21.
+        evidence:
+          - [budget-italy-requirements, 1, "in possesso di Patente di Guida rilasciata da almeno due anni"]
+      Europcar:
+        verdict: unclear
+        why: The period depends on the vehicle category; the table did not extract. New-driver power limits apply.
+        question: How long must the licence be held for an economy car, for a driver aged 23?
+        evidence:
+          - [europcar-italy-terms, 5, "holds a valid driver license for a period which varies according to the category of vehicle"]
+          - [europcar-italy-terms, 5, "Those who obtained their driving license on or after December 14, 2024, are considered new drivers for three years"]
+    not_found: [Hertz]
+
+  - id: idp
+    question: Does an Israeli licence need an International Driving Permit or a translation?
+    answers:
+      Maggiore:
+        verdict: needs_extension
+        why: A non-European licence used outside its country needs an IDP or a notarised English translation.
+        evidence:
+          - [maggiore-italy-conditions, 14, "Or a driving licence was issued in a non-European country, and you are renting outside that country"]
+      Locauto:
+        verdict: needs_extension
+        why: Non-EU licences need an international licence or an embassy translation.
+        evidence:
+          - [locauto-booking-terms, 2, "patente valida per uso internazionale oppure tradotta da un’ambasciata"]
+      Enterprise:
+        verdict: needs_extension
+        why: An IDP is required when the licence uses other characters than the country of rental.
+        evidence:
+          - [enterprise-italy-rome-eur, 1, "If the driving license is written in a language and characters different from those of the country of rental, an International Driving Permit is also required."]
+      Avis:
+        verdict: needs_extension
+        why: Non-EU licences need an IDP or a sworn translation.
+        evidence:
+          - [avis-italy-requirements, 1, "il permesso di guida internazionale o traduzione giurata della stessa"]
+      Budget:
+        verdict: needs_extension
+        why: Non-EU licences need an IDP or a sworn translation.
+        evidence:
+          - [budget-italy-requirements, 1, "il permesso di guida internazionale o traduzione giurata della stessa"]
+      Europcar:
+        verdict: needs_extension
+        why: Non-EU drivers need the original IDP or a sworn translation.
+        evidence:
+          - [europcar-italy-terms, 5, "the original of an international driving permit compliant to the models set forth in the Geneva or Vienna Conventions"]
+    not_found: [Hertz]
+
+  - id: digital-licence
+    question: Is a digital driving licence (on a phone) accepted?
+    answers:
+      Maggiore:
+        verdict: excluded
+        why: Digital licences are refused.
+        evidence:
+          - [maggiore-italy-conditions, 14, "We do not accept digital driving licenses."]
+      Enterprise:
+        verdict: excluded
+        why: Electronic or digital licences are refused.
+        evidence:
+          - [enterprise-italy-rome-eur, 1, "Electronic or digital driving licenses are not accepted."]
+      Avis:
+        verdict: excluded
+        why: The licence must always be shown in the original.
+        evidence:
+          - [avis-italy-requirements, 1, "Deve essere sempre esibita in originale."]
+      Budget:
+        verdict: excluded
+        why: The licence must always be shown in the original.
+        evidence:
+          - [budget-italy-requirements, 1, "Deve essere sempre esibita in originale."]
+      Europcar:
+        verdict: excluded
+        why: Digital licences and phone images are refused.
+        evidence:
+          - [europcar-italy-terms, 5, "digital driving licenses are not accepted"]
+    not_found: [Locauto, Hertz]
+
+  - id: debit-payment
+    question: Paying the rental with a Visa or Mastercard debit card
+    answers:
+      Maggiore:
+        verdict: covered
+        why: Visa and Mastercard debit cards are accepted.
+        evidence:
+          - [maggiore-italy-conditions, 3, "Visa debit cards"]
+          - [maggiore-italy-conditions, 3, "MasterCard debit cards"]
+      Locauto:
+        verdict: covered
+        why: Named credit and debit cards are accepted, except for groups L, T and K.
+        evidence:
+          - [locauto-special-terms, 2, "Sono accettate sia le carte di credito che le carte di debito nominali"]
+      Enterprise:
+        verdict: covered
+        why: A debit or credit card in the renter's name.
+        evidence:
+          - [enterprise-italy-rome-eur, 1, "A valid debit or credit card in the renter's name must be presented upon collection of the vehicle."]
+      Hertz:
+        verdict: covered
+        why: Hertz reserves the amount on a credit or debit card.
+        evidence:
+          - [hertz-italy-terms, 3, "we will reserve an amount on your credit or debit card"]
+      Avis:
+        verdict: covered
+        why: A credit or debit card in the customer's name; no Maestro, Cirrus or Visa Electron.
+        evidence:
+          - [avis-italy-requirements, 1, "il Cliente è obbligato a presentare carta di credito o di debito a lui intestata"]
+      Budget:
+        verdict: covered
+        why: A credit or debit card in the customer's name; no Maestro, Cirrus or Visa Electron.
+        evidence:
+          - [budget-italy-requirements, 1, "il Cliente è obbligato a presentare carta di credito o di debito a lui intestata"]
+      Europcar:
+        verdict: covered
+        why: Visa and Mastercard credit or debit cards; no prepaid cards.
+        evidence:
+          - [europcar-italy-terms, 4, "Credit Card / Debit Card Visa - Mastercard"]
+
+  - id: debit-deposit
+    question: Can the deposit or pre-authorisation go on a debit card?
+    answers:
+      Maggiore:
+        verdict: covered
+        why: The pre-authorisation goes on a payment card in your name, and debit cards are payment cards here.
+        evidence:
+          - [maggiore-italy-conditions, 15, "You’ll need to give us a payment card in your own name that has enough money available on it."]
+      Locauto:
+        verdict: covered
+        why: A physical credit or debit card in the customer's name blocks the deposit.
+        evidence:
+          - [locauto-booking-terms, 1, "una carta di credito o di debito non virtuale a lui intestata"]
+          - [locauto-booking-terms, 1, "per il blocco del deposito cauzionale"]
+      Enterprise:
+        verdict: unclear
+        why: The page asks for a debit or credit card but says nothing about the deposit.
+        question: Can the deposit be held on a Visa debit card?
+        evidence:
+          - [enterprise-italy-rome-eur, 1, "A valid debit or credit card in the renter's name must be presented upon collection of the vehicle."]
+      Hertz:
+        verdict: covered
+        why: The reservation of credit is made on a credit or debit card.
+        evidence:
+          - [hertz-italy-terms, 3, "we will reserve an amount on your credit or debit card (or take a deposit)"]
+      Avis:
+        verdict: unclear
+        why: A credit or debit card is required at pickup; the deposit card is not specified.
+        question: Can the deposit be held on a Visa debit card?
+        evidence:
+          - [avis-italy-requirements, 1, "carta di credito o di debito a lui intestata"]
+      Budget:
+        verdict: unclear
+        why: A credit or debit card is required at pickup; the deposit card is not specified.
+        question: Can the deposit be held on a Visa debit card?
+        evidence:
+          - [budget-italy-requirements, 1, "carta di credito o di debito a lui intestata"]
+      Europcar:
+        verdict: unclear
+        why: The payment table accepts a credit or debit card for the deposit; the deposit section says credit card.
+        question: Can the deposit be held on a Visa debit card?
+        evidence:
+          - [europcar-italy-terms, 4, "However, a credit/debit card is required for the deposit."]
+          - [europcar-italy-terms, 19, "You grant a credit card authorization for a deposit"]
+
+  - id: virtual-card
+    question: Using a virtual or phone-wallet card instead of a physical card
+    answers:
+      Maggiore:
+        verdict: excluded
+        why: Digital payment cards are refused.
+        evidence:
+          - [maggiore-italy-conditions, 3, "We do not accept Digital Payment Cards."]
+      Locauto:
+        verdict: excluded
+        why: The card must be shown physically and must not be virtual.
+        evidence:
+          - [locauto-booking-terms, 1, "presentare fisicamente una carta di credito o di debito non virtuale"]
+      Avis:
+        verdict: unclear
+        why: Traditional credit cards are recognised by embossed numbers; virtual cards are not addressed.
+        question: Is a virtual card (no physical card) accepted at pickup?
+        evidence:
+          - [avis-italy-requirements, 1, "riconoscibili tra l’altro per i numeri stampigliati in rilievo sulla carta stessa"]
+      Budget:
+        verdict: unclear
+        why: Traditional credit cards are recognised by embossed numbers; virtual cards are not addressed.
+        question: Is a virtual card (no physical card) accepted at pickup?
+        evidence:
+          - [budget-italy-requirements, 1, "riconoscibili tra l’altro per i numeri stampigliati in rilievo sulla carta stessa"]
+    not_found: [Enterprise, Hertz, Europcar]
+
+  - id: card-in-other-name
+    question: Using a card in someone else's name (e.g. a parent's)
+    answers:
+      Maggiore:
+        verdict: excluded
+        why: The card must be in your own name.
+        evidence:
+          - [maggiore-italy-conditions, 15, "a payment card in your own name"]
+      Locauto:
+        verdict: excluded
+        why: The card must be in the customer's name.
+        evidence:
+          - [locauto-booking-terms, 1, "non virtuale a lui intestata, nominativa"]
+      Enterprise:
+        verdict: excluded
+        why: The card must be in the renter's name.
+        evidence:
+          - [enterprise-italy-rome-eur, 1, "A valid debit or credit card in the renter's name"]
+      Avis:
+        verdict: excluded
+        why: The card must belong to the holder of the rental agreement.
+        evidence:
+          - [avis-italy-requirements, 1, "la Carta di Credito deve appartenere all'intestatario della Lettera di Noleggio"]
+      Budget:
+        verdict: excluded
+        why: The card must belong to the holder of the rental agreement.
+        evidence:
+          - [budget-italy-requirements, 1, "la Carta di Credito deve appartenere all'intestatario della Lettera di Noleggio"]
+      Europcar:
+        verdict: unclear
+        why: The card must show its owner's name; whether the owner must be the renter is not stated.
+        question: Must the card be in the main driver's name?
+        evidence:
+          - [europcar-italy-terms, 4, "It must contain the card owner’s name and surname."]
+    not_found: [Hertz]
+
+  - id: deposit-amount
+    question: Size of the deposit or pre-authorisation for an economy car
+    answers:
+      Maggiore:
+        verdict: needs_extension
+        why: The rental price plus €200, minus anything prepaid.
+        evidence:
+          - [maggiore-italy-conditions, 15, "The vehicle rental price* plus EUR 200"]
+      Locauto:
+        verdict: covered
+        why: No deposit for cars; €500 for vans.
+        evidence:
+          - [locauto-special-terms, 2, "Autoveicoli 0 €"]
+      Hertz:
+        verdict: needs_extension
+        why: Amounts owed plus a full tank, minimum €200, plus €500 without SuperCover.
+        evidence:
+          - [hertz-italy-terms, 3, "There will always be a MINIMUM of €200 applied"]
+          - [hertz-italy-terms, 3, "€500 if you have not purchased SuperCover"]
+      Europcar:
+        verdict: needs_extension
+        why: €500 when the rental is prepaid.
+        evidence:
+          - [europcar-italy-terms, 19, "If You have paid for your rental in advance, the amount of the deposit is 500 EUR"]
+    not_found: [Enterprise, Avis, Budget]
+
+  - id: one-way-domestic
+    question: One-way rental within Italy (e.g. Rome to Milan)
+    answers:
+      Maggiore:
+        verdict: needs_extension
+        why: A fee between €14.64 and €1,354.74.
+        evidence:
+          - [maggiore-italy-conditions, 21, "you can expect it to be between € 14.64 (VAT included) and € 1354.74"]
+      Locauto:
+        verdict: needs_extension
+        why: €60 on the mainland and to or from Sicily.
+        evidence:
+          - [locauto-special-terms, 1, "Viaggio a lasciare in Italia Continentale e da/verso la Sicilia 60,00 € A noleggio"]
+      Enterprise:
+        verdict: needs_extension
+        why: A one-way fee, shown when booking.
+        evidence:
+          - [enterprise-italy-rome-eur, 1, "All rentals where the vehicle is not returned to the same location as pick-up will be subject to a one-way fee."]
+      Hertz:
+        verdict: needs_extension
+        why: A one-way fee may apply.
+        evidence:
+          - [hertz-italy-terms, 11, "One Way Fee May apply if you return the vehicle to a location different from the start"]
+      Europcar:
+        verdict: needs_extension
+        why: Return to another station for the cost in the tariff guide.
+        evidence:
+          - [europcar-italy-terms, 13, "You may return the Vehicle to another Europcar station for the cost mentioned on the Tariff Guide"]
+    not_found: [Avis, Budget]
+
+  - id: one-way-international
+    question: Returning the car in another country (e.g. pick up in Milan, return in Nice)
+    answers:
+      Maggiore:
+        verdict: needs_extension
+        why: A fee between €576.45 and €2,667.40.
+        evidence:
+          - [maggiore-italy-conditions, 21, "If you want to pick up the vehicle in one country and drop it off in another country, you can expect it to be between € 576.45 (VAT included) and € 2667.40"]
+      Locauto:
+        verdict: needs_extension
+        why: €2,000 per rental for cars; not allowed for vans and electric cars.
+        evidence:
+          - [locauto-special-terms, 1, "Viaggio a lasciare da/verso Paesi esteri 2.000,00 € A noleggio"]
+      Enterprise:
+        verdict: needs_extension
+        why: Only to selected locations, pre-booked; €2,000 penalty without authorisation.
+        evidence:
+          - [enterprise-italy-rome-eur, 1, "Domestic and international one-way rentals are permitted to selected locations and must be pre-booked or authorized at the time of pick-up."]
+          - [enterprise-italy-rome-eur, 1, "Returning the vehicle in another country without prior authorization will incur a penalty charge of 2000 EUR plus VAT and surcharges."]
+      Hertz:
+        verdict: unclear
+        why: Hertz says it will advise at booking whether the journey is allowed.
+        question: Is a one-way rental from Italy to France or Switzerland allowed, and what does it cost?
+        evidence:
+          - [hertz-italy-terms, 11, "You will be advised at the time of reservation if your journey is permissible."]
+      Europcar:
+        verdict: needs_extension
+        why: The tariff guide lists a one-way fee for Italy and abroad.
+        evidence:
+          - [europcar-italy-price-list, 11, "One Way Italy/Abroad"]
+    not_found: [Avis, Budget]
+
+  - id: cross-border
+    question: Driving from Italy into France and Switzerland
+    answers:
+      Maggiore:
+        verdict: needs_extension
+        why: France and Switzerland are on the permitted list, with a cross-border fee.
+        evidence:
+          - [maggiore-italy-conditions, 4, "You are only allowed to use the vehicle in:"]
+          - [maggiore-italy-conditions, 4, "On the condition of paying the cross border fee set out below"]
+      Locauto:
+        verdict: covered
+        why: EU countries plus Norway, Switzerland and the UK.
+        evidence:
+          - [locauto-general-terms, 2, "la conduzione del veicolo è tuttavia consentita nei seguenti Paesi non compresi nell’UE: Norvegia, Svizzera e Regno Unito"]
+      Enterprise:
+        verdict: covered
+        why: EU plus Norway, Switzerland and the UK, without prior authorisation.
+        evidence:
+          - [enterprise-italy-rome-eur, 1, "Vehicles can be driven in all countries of the European Union, plus Norway, Switzerland and the United Kingdom."]
+      Hertz:
+        verdict: needs_extension
+        why: Prior permission and a cross-border fee for any other country.
+        evidence:
+          - [hertz-italy-terms, 5, "If you want to drive the vehicle in any other country, you must gain our prior permission and the Cross Border Fee will apply"]
+      Budget:
+        verdict: covered
+        why: France and Switzerland are on the permitted list.
+        evidence:
+          - [budget-italy-booking-terms, 1, "potrà circolare esclusivamente nei seguenti Paesi: Austria, Belgio, Danimarca, Francia"]
+          - [budget-italy-booking-terms, 1, "Svezia e Svizzera"]
+      Europcar:
+        verdict: covered
+        why: France and Switzerland are in the permitted territory.
+        evidence:
+          - [europcar-italy-terms, 5, "France (Corsica included and excluded the French DOM TOM territories)"]
+          - [europcar-italy-terms, 5, "Sweden, Switzerland"]
+    not_found: [Avis]
+
+  - id: cross-border-fee
+    question: Fee for driving into France or Switzerland
+    answers:
+      Maggiore:
+        verdict: needs_extension
+        why: About €7.08 to €8.50 per day, for at most 4 days.
+        evidence:
+          - [maggiore-italy-conditions, 4, "cross border fee approximately between €7.08 (VAT included) and 8.50€"]
+          - [maggiore-italy-conditions, 5, "for a maximum of 4 days"]
+      Enterprise:
+        verdict: covered
+        why: No charge for cross-border travel.
+        evidence:
+          - [enterprise-italy-rome-eur, 1, "No additional charges apply for cross-border travel."]
+      Hertz:
+        verdict: needs_extension
+        why: A cross-border fee applies outside the country of rental.
+        evidence:
+          - [hertz-italy-terms, 11, "Cross-Border Fee Applies if you drive the vehicle outside the country of rental."]
+      Europcar:
+        verdict: covered
+        why: The paid cross-border product is needed only for Croatia, Slovenia, Hungary and Czechia.
+        evidence:
+          - [europcar-italy-terms, 5, "also in Croatia, Slovenia, Hungary and Czech Republic"]
+    not_found: [Locauto, Avis, Budget]
+
+  - id: forbidden-countries
+    question: Driving into a non-permitted country (e.g. Albania or Serbia)
+    answers:
+      Maggiore:
+        verdict: excluded
+        why: Any country off the list is unpermitted.
+        evidence:
+          - [maggiore-italy-conditions, 5, "Any country not listed as a permitted country is an unpermitted country."]
+      Locauto:
+        verdict: excluded
+        why: The customer is fully liable for damage in a non-EU state outside Norway, Switzerland and the UK.
+        evidence:
+          - [locauto-general-terms, 2, "circolazione in uno Stato non compreso nell’Unione Europea"]
+      Hertz:
+        verdict: excluded
+        why: Forbidden countries void all waivers and cost a €500 penalty.
+        evidence:
+          - [hertz-italy-terms, 29, "you are obliged to pay a contractual penalty of €500 for the violation of the prohibition"]
+      Budget:
+        verdict: excluded
+        why: Transit and return are expressly forbidden in a listed set, Albania and Serbia included.
+        evidence:
+          - [budget-italy-booking-terms, 1, "E' espressamente vietato il transito e la riconsegna delle vetture Budget nei seguenti Paesi: Albania"]
+      Europcar:
+        verdict: excluded
+        why: Other countries can bring a contractual penalty.
+        evidence:
+          - [europcar-italy-terms, 5, "in any other country where the transit of the vehicle is not permitted, the Client could be charged with a contractual penalty"]
+    not_found: [Enterprise, Avis]
+
+  - id: additional-driver
+    question: Fee for an additional driver
+    answers:
+      Maggiore:
+        verdict: needs_extension
+        why: €12.92 to €15.50 per day per driver.
+        evidence:
+          - [maggiore-italy-conditions, 17, "you can expect it to be between € 12.92 (VAT included) and € 15.50"]
+      Locauto:
+        verdict: needs_extension
+        why: €7 per day.
+        evidence:
+          - [locauto-special-terms, 1, "Guidatore aggiuntivo 7,00 € Al giorno"]
+      Enterprise:
+        verdict: needs_extension
+        why: €5 per day before VAT.
+        evidence:
+          - [enterprise-italy-rome-eur, 1, "An additional driver surcharge is applicable to each additional driver at a rate of 5.00 EUR per day"]
+      Hertz:
+        verdict: needs_extension
+        why: A standard fee per additional driver.
+        evidence:
+          - [hertz-italy-terms, 11, "We apply a standard fee for each additional driver added to your rental"]
+      Europcar:
+        verdict: needs_extension
+        why: €13.13 per day, read from the tariff table layout (first price beside the first service).
+        evidence:
+          - [europcar-italy-price-list, 11, "€ 13,13 per day (max 17 days per rental)"]
+    not_found: [Avis, Budget]
+
+  - id: excess
+    question: Damage excess with the cover included in the rate (economy car)
+    answers:
+      Maggiore:
+        verdict: needs_extension
+        why: The excess is on the rental agreement; SCDW reduces it to zero for a fee.
+        evidence:
+          - [maggiore-italy-conditions, 7, "Super Collision Damage Waiver (SCDW) is a service which reduces your excess to zero"]
+      Locauto:
+        verdict: needs_extension
+        why: Groups A, B, C, E on base rates carry €1,200 damage and €1,800 theft excess.
+        evidence:
+          - [locauto-special-terms, 2, "Tariffe base/Body Protection/Glass&Wheels 1.200 € 1.800 € 3.600 €"]
+      Enterprise:
+        verdict: needs_extension
+        why: Damage waiver is included; the excess for Mini and Economy is €1,200.
+        evidence:
+          - [enterprise-italy-rome-eur, 1, "Mini and Economy: 1200 EUR"]
+      Hertz:
+        verdict: needs_extension
+        why: Liability is capped at the excess amount for each incident.
+        evidence:
+          - [hertz-italy-terms, 12, "you are liable for each incident only up to the excess amount"]
+      Europcar:
+        verdict: needs_extension
+        why: The damage excess is shown on the agreement as Excess(CDW).
+        evidence:
+          - [europcar-italy-terms, 6, "means the amount of the Damage Excess"]
+    not_found: [Avis, Budget]
+
+  - id: winter-equipment
+    question: Winter tyres or snow chains (required on some Italian roads in winter)
+    answers:
+      Maggiore:
+        verdict: needs_extension
+        why: Winter equipment is required in some areas; chains or all-weather tyres are recommended.
+        evidence:
+          - [maggiore-italy-conditions, 23, "In some areas of Italy having Winter Tyres fitted or a set of Snow Chains on board when hiring a"]
+      Locauto:
+        verdict: needs_extension
+        why: Winter tyres cost up to €22.20 per day, for at most 15 days.
+        evidence:
+          - [locauto-special-terms, 1, "Maggiorazione pneumatici invernali Max 22,20 € Al giorno Max 15 giorni"]
+      Enterprise:
+        verdict: covered
+        why: Snow chains are free at all locations from 15 November to 15 April.
+        evidence:
+          - [enterprise-italy-rome-eur, 1, "Standard snow chains or textile snow chains will be provided without any additional cost in all locations from November 15th until April 15th."]
+      Hertz:
+        verdict: needs_extension
+        why: Winter tyres are listed among the charged extras.
+        evidence:
+          - [hertz-italy-terms, 11, "as baby/ child seats, winter tyres, GPS unit"]
+      Europcar:
+        verdict: needs_extension
+        why: Outside some northern regions, chains only on request and for a charge.
+        evidence:
+          - [europcar-italy-terms, 11, "the Europcar vehicles are equipped with snow chains only at the customer’s request and upon payment of a charge"]
+    not_found: [Avis, Budget]
+
+  - id: ferry
+    question: Taking the car on a ferry (e.g. to Sardinia or Corsica)
+    answers:
+      Locauto:
+        verdict: unclear
+        why: A one-way fee to or from Sardinia exists; ferry use itself is not addressed.
+        question: May the car go on a ferry to Sardinia or Corsica, and on what conditions?
+        evidence:
+          - [locauto-special-terms, 1, "Viaggio a lasciare da/verso la Sardegna 500,00 € A noleggio"]
+      Europcar:
+        verdict: needs_extension
+        why: Transport by boat is forbidden except scheduled services to the Italian islands.
+        evidence:
+          - [europcar-italy-terms, 8, "for being transported on board any type of boat, ship, train (except for scheduled services Italian Islands)"]
+    not_found: [Maggiore, Enterprise, Hertz, Avis, Budget]
+
+  - id: traffic-fines
+    question: Admin fee when a traffic fine (e.g. a ZTL camera) arrives after the rental
+    answers:
+      Maggiore:
+        verdict: covered
+        why: The €31.72 administration fee is for business customers; consumers do not pay it.
+        evidence:
+          - [maggiore-italy-conditions, 19, "This fee shall not be payable by Customers who qualify as consumers"]
+      Locauto:
+        verdict: needs_extension
+        why: A penalty applies on top of the fine itself.
+        evidence:
+          - [locauto-general-terms, 3, "l’importo della penale non è inclusivo dell’ammontare della sanzione"]
+      Enterprise:
+        verdict: needs_extension
+        why: €25 per toll or traffic violation.
+        evidence:
+          - [enterprise-italy-rome-eur, 1, "A penalty of 25,00 EUR will be applied per tolls/traffic violation."]
+      Hertz:
+        verdict: needs_extension
+        why: A standard administration charge for each road charge, toll or fine.
+        evidence:
+          - [hertz-italy-terms, 13, "Standard charge to recover our costs of dealing with any road charge/toll"]
+      Europcar:
+        verdict: needs_extension
+        why: The tariff guide lists a tolls-and-fines penalty.
+        evidence:
+          - [europcar-italy-price-list, 12, "Tolls and fines penalty"]
+    not_found: [Avis, Budget]

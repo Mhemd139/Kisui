@@ -1,0 +1,16 @@
+# Never public: personal trip data, copyrighted documents and their text
+private/
+cache/
+policies/
+
+# Local only: directions and state for the owner's agents
+CLAUDE.md
+STATE.md
+.claude/
+
+node_modules/
+.next/
+next-env.d.ts
+*.tsbuildinfo
+.vercel/
+.env*
